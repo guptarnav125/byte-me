@@ -48,7 +48,11 @@ public class admin extends user{
                     this.menuManagement();
                     break;
                 case 2:
+                    this.orderManagement();
+                    break;
                 case 3:
+                    this.generateReport();
+                    break;
                 case 4:
                     logout=true;
                     System.out.println("Logout Successful");
@@ -58,6 +62,48 @@ public class admin extends user{
                     break;
             }
         }while(!logout);
+    }
+
+    public void generateReport(){
+
+    }
+
+    public void orderManagement(){
+        boolean back=false;
+        do{
+            System.out.println("Order Management:");
+            System.out.println("1. View Pending Orders");
+            System.out.println("2. Update Order Status");
+            System.out.println("3. Process Refunds");
+            System.out.println("4. Handle Special Requests");
+            System.out.println("5. Back ");
+            System.out.print("Enter your choice: ");
+            try{
+                choice=scanner.nextInt();
+            } catch (Exception e) {
+                scanner.nextLine();
+                System.out.println("Invalid choice, try again");
+                continue;
+            }
+            scanner.nextLine();
+            switch(choice){
+                case 1:
+                    orderHistory.fulLHistory();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    back=true;
+                    break;
+                default:
+                    System.out.println("Invalid choice, try again");
+                    break;
+            }
+        }while(!back);
     }
 
     public void menuManagement(){

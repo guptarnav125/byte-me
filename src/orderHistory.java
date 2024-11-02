@@ -1,12 +1,11 @@
-import java.util.ArrayList;
-import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 public class orderHistory {
-    private ArrayList<order> orders=new ArrayList<>();
+    private TreeSet<order> orders=new TreeSet<>();
     private double customerTotal=0;
     private int customerid;
     private int priority;
-    private static PriorityQueue<order> orderQueue=new PriorityQueue<>();
+    private static TreeSet<order> orderQueue=new TreeSet<>();
 
     public orderHistory(int customerid,int priority) {
         this.customerid = customerid;
@@ -22,6 +21,7 @@ public class orderHistory {
     }
 
     public void customerHistory(){
+        System.out.println();
         for(order order:orders){
             System.out.println("Order ID: "+order.getOrderid());
             System.out.println("Customer ID: "+ this.customerid);
@@ -37,6 +37,7 @@ public class orderHistory {
     }
 
     public static void fulLHistory(){
+        System.out.println();
         for(order order:orderQueue){
             System.out.println("Order ID: "+order.getOrderid());
             System.out.println("Customer ID: "+ order.getCustomerid());

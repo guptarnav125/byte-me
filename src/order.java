@@ -9,7 +9,7 @@ public class order implements Comparable<order>{
     private int customerid;
     private int priority;
     private String status="Pending";
-    private String[] statusList={"pending","preparing","delivered","denied"};
+    private String[] statusList={"pending","preparing","delivered","denied","cancelled"};
     private HashMap<item,Integer> items=new HashMap<>();
     private Scanner scanner=new Scanner(System.in);
     private double total=0;
@@ -65,11 +65,13 @@ public class order implements Comparable<order>{
         System.out.printf("%-10s %-15s %-10s %-10s%n", "Item ID", "Name", "Price", "Quantity");
         System.out.println("-----------------------------------------------");
 
+        double displayTotal=0;
         for (item x : items.keySet()) {
+            displayTotal+=items.get(x)*x.getPrice();
             System.out.printf("%-10s %-15s %-10.2f %-10s%n", x.getItemid(), x.getName(), x.getPrice(), items.get(x));
         }
 
-        System.out.print("Total: "+this.getTotal());
+        System.out.print("Total: "+ displayTotal);
         System.out.println();
     }
 

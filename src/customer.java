@@ -53,6 +53,8 @@ public class customer extends user {
                     this.cartOrder();
                     break;
                 case 3:
+                    this.trackOrder();
+                    break;
                 case 4:
                     logout = true;
                     System.out.println("Logout Successful");
@@ -64,6 +66,39 @@ public class customer extends user {
         } while (!logout);
     }
 
+    public void trackOrder() {
+        boolean back = false;
+        do {
+            System.out.println("Order Tracking:");
+            System.out.println("1. View Order Status");
+            System.out.println("2. Cancel Order");
+            System.out.println("3. Order History");
+            System.out.println("4. Back");
+            System.out.print("Enter your choice: ");
+            try {
+                choice = scanner.nextInt();
+            } catch (Exception e) {
+                scanner.nextLine();
+                System.out.println("Invalid choice, try again");
+                continue;
+            }
+            scanner.nextLine();
+            switch (choice) {
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    back = true;
+                    break;
+                default:
+                    System.out.println("Invalid choice, try again");
+                    break;
+            }
+        } while (!back);
+    }
 
     public void browseMenu() {
         boolean back = false;
@@ -110,8 +145,8 @@ public class customer extends user {
             System.out.println("1. Add item");
             System.out.println("2. Modify quantity");
             System.out.println("3. Remove item");
-            System.out.println("4. View total order");
-            System.out.println("5. Checkout Order");
+            System.out.println("4. View total");
+            System.out.println("5. Checkout");
             System.out.println("6. Back");
             System.out.print("Enter your choice: ");
             try {
@@ -198,7 +233,7 @@ public class customer extends user {
                         choice3=scanner.nextLine().toLowerCase();
                         switch (choice3) {
                             case "y":
-                                System.out.println("VIP membership Purchased");
+                                System.out.println("VIP Membership Purchased");
                                 history.setCustomerTotal(history.getCustomerTotal()+100);
                                 order1.setPriority(1);
                                 history.setPriority(1);
@@ -220,12 +255,8 @@ public class customer extends user {
                 case 6:
                     back = true;
                     break;
-                case 7:
-                    orderHistory.fulLHistory();
-                    break;
                 default:
                     System.out.println("Invalid choice, try again");
-                    history.customerHistory();
                     break;
             }
         } while (!back);

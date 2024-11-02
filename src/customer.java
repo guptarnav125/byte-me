@@ -9,7 +9,7 @@ public class customer extends user {
     private int priority=2;
     private String choice3;
     private Scanner scanner = new Scanner(System.in);
-    public orderHistory history = new orderHistory();
+    public orderHistory history = new orderHistory(this.getUserid(),this.priority);
 
     public customer(String name, String password) {
         super(name, password);
@@ -194,13 +194,14 @@ public class customer extends user {
                         break;
                     }
                     if (this.priority==2) {
-                        System.out.print("Would you like to purchase VIP membership? (y/n): ");
+                        System.out.print("Would you like to purchase VIP membership for 100 rupees? (y/n): ");
                         choice3=scanner.nextLine().toLowerCase();
                         switch (choice3) {
                             case "y":
                                 System.out.println("VIP membership Purchased");
-                                order1.setTotal(order1.getTotal()+100);
+                                history.setCustomerTotal(history.getCustomerTotal()+100);
                                 order1.setPriority(1);
+                                history.setPriority(1);
                                 this.priority=1;
                                 break;
                             case "n":

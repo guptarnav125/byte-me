@@ -58,7 +58,6 @@ public class order implements Comparable<order>{
     public void updateTotal(){
         for (item x : items.keySet()) {
             total+=items.get(x)*x.getPrice();
-            System.out.printf("%-10s %-15s %-10.2f %-10s%n", x.getItemid(), x.getName(), x.getPrice(), items.get(x));
         }
     }
 
@@ -66,13 +65,11 @@ public class order implements Comparable<order>{
         System.out.printf("%-10s %-15s %-10s %-10s%n", "Item ID", "Name", "Price", "Quantity");
         System.out.println("-----------------------------------------------");
 
-        total=0;
         for (item x : items.keySet()) {
-            total+=items.get(x)*x.getPrice();
             System.out.printf("%-10s %-15s %-10.2f %-10s%n", x.getItemid(), x.getName(), x.getPrice(), items.get(x));
         }
 
-        System.out.print("Total: "+total);
+        System.out.print("Total: "+this.getTotal());
         System.out.println();
     }
 

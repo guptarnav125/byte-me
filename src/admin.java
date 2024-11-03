@@ -91,6 +91,7 @@ public class admin extends user{
                     orderHistory.fulLHistory();
                     break;
                 case 2:
+                    orderHistory.updateStatus();
                     break;
                 case 3:
                     break;

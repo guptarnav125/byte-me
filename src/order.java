@@ -75,7 +75,7 @@ public class order implements Comparable<order>{
         System.out.println();
     }
 
-    public void updateStatus(String status) {
+    public void setStatus(String status) {
         if(Arrays.asList(statusList).contains(status.toLowerCase())){this.status=status;}
         else{System.out.println("Invalid status, try again");}
     }

@@ -89,6 +89,7 @@ public class customer extends user {
                 case 2:
                     break;
                 case 3:
+                    this.history.customerHistory();
                     break;
                 case 4:
                     back = true;
@@ -247,6 +248,8 @@ public class customer extends user {
                                 break;
                         }
                     }
+                    System.out.println("Do you have any special requests?");
+                    order1.setRequest(scanner.nextLine());
                     history.addOrder(order1);
                     order1.displayOrder();
                     System.out.println("Checkout Successful");

@@ -13,6 +13,7 @@ public class order implements Comparable<order>{
     private HashMap<item,Integer> items=new HashMap<>();
     private Scanner scanner=new Scanner(System.in);
     private double total=0;
+    private String request;
 
     public order(int customerid,int priority) {
         this.customerid = customerid;
@@ -161,5 +162,13 @@ public class order implements Comparable<order>{
 
     public void setCustomerid(int customerid) {
         this.customerid = customerid;
+    }
+
+    public String getRequest() {
+        return request;
+    }
+
+    public void setRequest(String request) {
+        this.request = request;
     }
 }

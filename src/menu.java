@@ -26,8 +26,10 @@ public class menu {
             System.out.println("Item with ID " + itemid + " does not exist.");
             return;
         }
-
         item x=Menu.remove(itemid);
+
+
+
         MenuByPrice.remove(x);
     }
 

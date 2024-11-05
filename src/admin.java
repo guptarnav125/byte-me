@@ -94,8 +94,10 @@ public class admin extends user{
                     orderHistory.updateStatus();
                     break;
                 case 3:
+                    orderHistory.processRefunds();
                     break;
                 case 4:
+                    orderHistory.handleRequests();
                     break;
                 case 5:
                     back=true;

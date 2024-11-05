@@ -9,6 +9,7 @@ public class orderHistory {
     private int priority;
     private static TreeSet<order> orderQueue=new TreeSet<>();
     private static HashMap<order,String> completedOrders=new HashMap<>();
+    private static HashMap<order,String> cancelledOrders=new HashMap<>();
     private static Scanner scanner = new Scanner(System.in);
 
     public orderHistory(int customerid,int priority) {
@@ -90,7 +91,7 @@ public class orderHistory {
                 case 4:
                     order.setStatus("Denied");
                     orderQueue.remove(order);
-                    completedOrders.put(order,order.getStatus());
+                    cancelledOrders.put(order,order.getStatus());
                     break;
                 default:
                     System.out.println("Invalid choice");
@@ -100,7 +101,27 @@ public class orderHistory {
     }
 
     public static void processRefunds(){
+        System.out.println();
+        for(order order: cancelledOrders.keySet()){
+            System.out.println("Order ID: "+order.getOrderid());
+            System.out.println("Customer ID: "+ order.getCustomerid());
+            System.out.println("Order Status: "+order.getStatus());
 
+            System.out.println("Refund has been initiated");
+            System.out.println();
+        }
+    }
+
+    public static void handleRequests(){
+        System.out.println();
+        for(order order: orderQueue){
+            System.out.println("Order ID: "+order.getOrderid());
+            System.out.println("Customer ID: "+ order.getCustomerid());
+            System.out.println("Special Request: "+order.getRequest());
+
+            System.out.println("Special request has been handled");
+            System.out.println();
+        }
     }
 
     public int getPriority() {
@@ -118,4 +139,5 @@ public class orderHistory {
     public void setCustomerTotal(double customerTotal) {
         this.customerTotal = customerTotal;
     }
+
 }

@@ -215,5 +215,22 @@ public class menu {
         }
     }
 
-    public static void filterCategory(){}
+    public static void filterCategory(){
+        System.out.print("Enter category: ");
+        String filter=scanner.nextLine();
+        if(item.checkCategory(filter)){
+            System.out.printf("%-10s %-15s %-10s %-13s %-10s%n", "Item ID", "Name", "Price", "Availability","Category");
+            System.out.println("-------------------------------------------------------------");
+            boolean found=false;
+            for(item item:Menu.values()) {
+                if (item.getCategory().toLowerCase().contains(filter.toLowerCase())) {
+                    found = true;
+                    System.out.printf("%-10s %-15s %-10.2f %-13s %-10s%n", item.getItemid(), item.getName(), item.getPrice(), item.getQuantity(), item.getCategory());
+                }
+            }
+            if(!found){
+                System.out.println("No items found matching your filter");
+            }
+        }
+    }
 }

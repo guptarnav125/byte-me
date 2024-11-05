@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.PriorityQueue;
 import java.util.TreeSet;
 
 public class orderHistory {
@@ -23,14 +24,14 @@ public class orderHistory {
         o.updateTotal();
         customerTotal+=o.getTotal();
         totalSales+=o.getTotal();
-        orders.add(o);
-        orderQueue.add(o);
+        orders.add(o); //customer's orders
+        orderQueue.add(o); //all orders
     }
 
     public static void generateReport(){
         System.out.println();
-        System.out.println("Total Sales: "+totalSales);
-        System.out.println("Total Orders: "+(order.counter-1));
+        System.out.println("Total Sales: "+totalSales); //total updates when order is cancelled
+        System.out.println("Total Orders: "+(order.counter-1)); //total orders includes cancelled orders
         System.out.println();
 
     }

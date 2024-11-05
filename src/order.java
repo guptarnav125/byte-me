@@ -9,7 +9,7 @@ public class order implements Comparable<order>{
     private int customerid;
     private int priority;
     private String status="Pending";
-    private String[] statusList={"pending","preparing","delivered","denied","cancelled"};
+    private String[] statusList={"pending","preparing","delivered","denied","cancelled"}; //so that status can only be set among these
     private HashMap<item,Integer> items=new HashMap<>();
     private Scanner scanner=new Scanner(System.in);
     private double total=0;
@@ -46,7 +46,7 @@ public class order implements Comparable<order>{
         return items.isEmpty();
     }
 
-    public void removeItem(int itemid) {
+    public void removeItem(int itemid) { //does not cancel previous orders
         item x=menu.getItem(itemid);
         if(!items.containsKey(x)) {
             System.out.println("Item with ID " + itemid + " has not been added.");
@@ -148,7 +148,7 @@ public class order implements Comparable<order>{
     }
 
     @Override
-    public int compareTo(order other) {
+    public int compareTo(order other) { //for sorting by price
         int priorityComparison = Integer.compare(this.priority, other.priority);
         if (priorityComparison == 0) {
             return Integer.compare(this.orderid, other.orderid);

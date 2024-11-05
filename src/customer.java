@@ -6,7 +6,7 @@ public class customer extends user {
     private int choice;
     private int choice1;
     private int choice2;
-    private int priority=2;
+    private int priority=2;     //priority=2 --> Regular    priority=1 --> VIP
     private String choice3;
     private Scanner scanner = new Scanner(System.in);
     public orderHistory history = new orderHistory(this.getUserid(),this.priority);
@@ -85,7 +85,7 @@ public class customer extends user {
             scanner.nextLine();
             switch (choice) {
                 case 1:
-                    this.history.customerHistory();
+                    this.history.customerHistory(); //history prints order status also
                     break;
                 case 2:
                     do {

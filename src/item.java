@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class item {
@@ -7,6 +8,7 @@ public class item {
     private int quantity;
     private String category;
     private static String[] categoryList ={"meal","snacks","beverages"};
+    private ArrayList<String> reviews = new ArrayList<>();
     private static int counter=1;
 
     public item(String name, double price, int quantity, String category) {
@@ -15,6 +17,21 @@ public class item {
         this.price = price;
         this.quantity = quantity;
         this.category = category;
+    }
+
+    public void addReview(String review) {
+        reviews.add(review);
+    }
+
+    public void showReviews() {
+        if(reviews.isEmpty()){
+            System.out.println("No reviews found");
+            return;
+        }
+        System.out.println("Reviews:");
+        for (String review : reviews) {
+            System.out.println(review);
+        }
     }
 
     public String toString() {

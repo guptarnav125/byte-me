@@ -51,7 +51,7 @@ public class admin extends user{
                     this.orderManagement();
                     break;
                 case 3:
-                    this.generateReport();
+                    orderHistory.generateReport();
                     break;
                 case 4:
                     logout=true;
@@ -62,10 +62,6 @@ public class admin extends user{
                     break;
             }
         }while(!logout);
-    }
-
-    public void generateReport(){
-
     }
 
     public void orderManagement(){

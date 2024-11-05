@@ -27,9 +27,6 @@ public class menu {
             return;
         }
         item x=Menu.remove(itemid);
-
-
-
         MenuByPrice.remove(x);
     }
 
@@ -87,6 +84,34 @@ public class menu {
                 i.setPrice(price);
                 i.setQuantity(quantity);
                 i.setCategory(category);
+            }
+        }
+    }
+
+    public static void viewReviews(int itemid){
+        if (!Menu.containsKey(itemid)) {
+            System.out.println("Item with ID " + itemid + " does not exist.");
+            return;
+        }
+        System.out.println();
+        for(item i:Menu.values()){
+            if(i.getItemid()==itemid){
+                i.showReviews();
+            }
+        }
+        System.out.println();
+    }
+
+    public static void addReviews(int itemid){
+        if (!Menu.containsKey(itemid)) {
+            System.out.println("Item with ID " + itemid + " does not exist.");
+            return;
+        }
+        System.out.print("Review: ");
+        String review = scanner.nextLine();
+        for(item i:Menu.values()){
+            if(i.getItemid()==itemid){
+                i.addReview(review);
             }
         }
     }

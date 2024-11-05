@@ -85,8 +85,21 @@ public class customer extends user {
             scanner.nextLine();
             switch (choice) {
                 case 1:
+                    this.history.customerHistory();
                     break;
                 case 2:
+                    do {
+                        System.out.println("Order ID of order to be cancelled: ");
+                        try {
+                            choice1 = scanner.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            scanner.nextLine();
+                            System.out.println("Invalid input, try again");
+                        }
+                    }while(true);
+                    scanner.nextLine();
+                    this.history.cancelOrder(choice1);
                     break;
                 case 3:
                     this.history.customerHistory();
@@ -109,7 +122,9 @@ public class customer extends user {
             System.out.println("2. Search");
             System.out.println("3. Filter by category");
             System.out.println("4. Sort by Price");
-            System.out.println("5. Back");
+            System.out.println("5. View reviews");
+            System.out.println("6. Provide reviews");
+            System.out.println("7. Back");
             System.out.print("Enter your choice: ");
             try {
                 choice1 = scanner.nextInt();
@@ -133,6 +148,34 @@ public class customer extends user {
                     menu.displayMenuByPrice();
                     break;
                 case 5:
+                    do {
+                        System.out.println("Item ID of item for review: ");
+                        try {
+                            choice2 = scanner.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            scanner.nextLine();
+                            System.out.println("Invalid input, try again");
+                        }
+                    }while(true);
+                    scanner.nextLine();
+                    menu.viewReviews(choice2);
+                    break;
+                case 6:
+                    do {
+                        System.out.println("Item ID of item for review: ");
+                        try {
+                            choice2 = scanner.nextInt();
+                            break;
+                        } catch (Exception e) {
+                            scanner.nextLine();
+                            System.out.println("Invalid input, try again");
+                        }
+                    }while(true);
+                    scanner.nextLine();
+                    menu.addReviews(choice2);
+                    break;
+                case 7:
                     back = true;
                     break;
                 default:

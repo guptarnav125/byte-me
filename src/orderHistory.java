@@ -11,6 +11,7 @@ public class orderHistory {
     private static HashMap<order,String> completedOrders=new HashMap<>();
     private static HashMap<order,String> cancelledOrders=new HashMap<>();
     private static Scanner scanner = new Scanner(System.in);
+    private static double totalSales=0;
 
     public orderHistory(int customerid,int priority) {
         this.customerid = customerid;
@@ -21,8 +22,17 @@ public class orderHistory {
         o.setOrderid(order.counter++);
         o.updateTotal();
         customerTotal+=o.getTotal();
+        totalSales+=o.getTotal();
         orders.add(o);
         orderQueue.add(o);
+    }
+
+    public static void generateReport(){
+        System.out.println();
+        System.out.println("Total Sales: "+totalSales);
+        System.out.println("Total Orders: "+(order.counter-1));
+        System.out.println();
+
     }
 
     public void customerHistory(){
@@ -108,6 +118,31 @@ public class orderHistory {
             System.out.println("Order Status: "+order.getStatus());
 
             System.out.println("Refund has been initiated");
+            System.out.println();
+        }
+    }
+
+    public void cancelOrder(int orderid){
+        boolean found=false;
+        System.out.println();
+        for(order order:orderQueue){
+            if(order.getOrderid()==orderid && order.getCustomerid()==this.customerid){
+                found=true;
+                if(order.getStatus().equalsIgnoreCase("pending")){
+                    orderQueue.remove(order);
+                    order.setStatus("Cancelled");
+                    this.customerTotal-=order.getTotal();
+                    totalSales-=order.getTotal();
+                    cancelledOrders.put(order,order.getStatus());
+                }
+                else{
+                    System.out.println("Preparation of order has started. Order cannot be cancelled.");
+                }
+                break;
+            }
+        }
+        if(!found){
+            System.out.println("Order cannot be cancelled");
             System.out.println();
         }
     }

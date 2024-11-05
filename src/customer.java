@@ -124,7 +124,11 @@ public class customer extends user {
                     menu.displayMenu();
                     break;
                 case 2:
+                    menu.search();
+                    break;
                 case 3:
+                    menu.filterCategory();
+                    break;
                 case 4:
                     menu.displayMenuByPrice();
                     break;

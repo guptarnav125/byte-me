@@ -63,13 +63,13 @@ public class order implements Comparable<order>{
     }
 
     public void displayOrder() {
-        System.out.printf("%-10s %-15s %-10s %-10s%n", "Item ID", "Name", "Price", "Quantity");
-        System.out.println("-----------------------------------------------");
+        System.out.printf("%-10s %-15s %-10s %-10s %-10s%n", "Item ID", "Name", "Price", "Quantity","Category");
+        System.out.println("---------------------------------------------------------");
 
         double displayTotal=0;
         for (item x : items.keySet()) {
             displayTotal+=items.get(x)*x.getPrice();
-            System.out.printf("%-10s %-15s %-10.2f %-10s%n", x.getItemid(), x.getName(), x.getPrice(), items.get(x));
+            System.out.printf("%-10s %-15s %-10.2f %-10s %-10s%n", x.getItemid(), x.getName(), x.getPrice(), items.get(x),x.getCategory());
         }
 
         System.out.print("Total: "+ displayTotal);

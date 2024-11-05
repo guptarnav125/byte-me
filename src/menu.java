@@ -66,11 +66,18 @@ public class menu {
         }while(true);
         scanner.nextLine();
 
+        String category;
+        do {
+            System.out.print("Category: ");
+            category = scanner.nextLine();
+        } while (!item.checkCategory(category));
+
         for(item i:MenuByPrice.keySet()){
             if(i.getItemid()==itemid){
                 i.setName(name);
                 i.setPrice(price);
                 i.setQuantity(quantity);
+                i.setCategory(category);
             }
         }
 
@@ -79,6 +86,7 @@ public class menu {
                 i.setName(name);
                 i.setPrice(price);
                 i.setQuantity(quantity);
+                i.setCategory(category);
             }
         }
     }
@@ -148,20 +156,39 @@ public class menu {
     }
 
     public static void displayMenu(){
-        System.out.printf("%-10s %-15s %-10s %-10s%n", "Item ID", "Name", "Price", "Availability");
-        System.out.println("---------------------------------------------------");
+        System.out.printf("%-10s %-15s %-10s %-13s %-10s%n", "Item ID", "Name", "Price", "Availability","Category");
+        System.out.println("-------------------------------------------------------------");
 
         for (item x : Menu.values()) {
-            System.out.printf("%-10s %-15s %-10.2f %-10s%n", x.getItemid(), x.getName(), x.getPrice(), x.getQuantity());
+            System.out.printf("%-10s %-15s %-10.2f %-13s %-10s%n", x.getItemid(), x.getName(), x.getPrice(), x.getQuantity(),x.getCategory());
         }
     }
 
     public static void displayMenuByPrice(){
-        System.out.printf("%-10s %-15s %-10s %-10s%n", "Item ID", "Name", "Price", "Availability");
-        System.out.println("---------------------------------------------------");
+        System.out.printf("%-10s %-15s %-10s %-13s %-10s%n", "Item ID", "Name", "Price", "Availability","Category");
+        System.out.println("-------------------------------------------------------------");
 
         for (item x : MenuByPrice.keySet()) {
-            System.out.printf("%-10s %-15s %-10.2f %-10s%n", x.getItemid(), x.getName(), x.getPrice(), x.getQuantity());
+            System.out.printf("%-10s %-15s %-10.2f %-13s %-10s%n", x.getItemid(), x.getName(), x.getPrice(), x.getQuantity(), x.getCategory());
         }
     }
+
+    public static void search(){
+        System.out.print("Enter keyword for search: ");
+        String search=scanner.nextLine();
+        System.out.printf("%-10s %-15s %-10s %-13s %-10s%n", "Item ID", "Name", "Price", "Availability","Category");
+        System.out.println("-------------------------------------------------------------");
+        boolean found=false;
+        for(item item:Menu.values()) {
+            if (item.getName().toLowerCase().contains(search.toLowerCase())) {
+                found = true;
+                System.out.printf("%-10s %-15s %-10.2f %-13s %-10s%n", item.getItemid(), item.getName(), item.getPrice(), item.getQuantity(), item.getCategory());
+            }
+        }
+        if(!found){
+            System.out.println("No items found matching your search");
+        }
+    }
+
+    public static void filterCategory(){}
 }

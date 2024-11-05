@@ -9,12 +9,15 @@ public class Main {
         customer prakhar=new customer("Prakhar","shreya");
         customer nakul=new customer("Nakul","nocool");
 
-        menu.addItem(new item("Pizza",80,10));
-        menu.addItem(new item("Burger",40,20));
-        menu.addItem(new item("Maggi",25,30));
-        menu.addItem(new item("Aloo Patty",30,20));
-        menu.addItem(new item("Chicken Patty",40,20));
-        menu.addItem(new item("Cold Coffee",40,50));
+        menu.addItem(new item("Pizza",80,10,"Meal"));
+        menu.addItem(new item("Chole Bature",70,10,"Meal"));
+        menu.addItem(new item("Rajma Chawal",60,10,"Meal"));
+        menu.addItem(new item("Burger",40,20,"Snacks"));
+        menu.addItem(new item("Maggi",25,30,"Snacks"));
+        menu.addItem(new item("Aloo Patty",30,20,"Snacks"));
+        menu.addItem(new item("Chicken Patty",40,20,"Snacks"));
+        menu.addItem(new item("Cold Coffee",40,50,"Beverages"));
+        menu.addItem(new item("Masala Tea",20,50,"Beverages"));
 
         String username1;
         String password1;

@@ -160,7 +160,16 @@ public class admin extends user{
                         }
                     }while(true);
                     scanner.nextLine();
-                    menu.addItem(new item(name, price, quantity));
+                    String category;
+                    do {
+                        System.out.print("Category: ");
+                        category=scanner.nextLine();
+                        if(item.checkCategory(category)){
+                            break;
+                        }
+                    }while(true);
+
+                    menu.addItem(new item(name, price, quantity,category));
                     break;
                 case 3:
                     do {

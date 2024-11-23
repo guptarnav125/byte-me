@@ -17,10 +17,10 @@ public class customer extends user {
     }
 
     public static customer login(String username, String password) {
-        customer customer = customers.get(username);
-        if (customer != null && customer.getPassword().equals(password)) {
+        customer customer1 = customers.get(username);
+        if (customer1 != null && customer1.getPassword().equals(password)) {
             System.out.println("Customer Login Successful");
-            return customer;
+            return customer1;
         } else {
             System.out.println("Customer Login Unsuccessful");
             return null;

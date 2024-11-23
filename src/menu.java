@@ -215,6 +215,14 @@ public class menu {
         }
     }
 
+    public static HashMap<Integer, item> getMenu() {
+        return Menu;
+    }
+
+    public static TreeMap<item, Integer> getMenuByPrice() {
+        return MenuByPrice;
+    }
+
     public static void filterCategory(){
         System.out.print("Enter category: ");
         String filter=scanner.nextLine();

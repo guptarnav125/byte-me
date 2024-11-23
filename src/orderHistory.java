@@ -176,4 +176,11 @@ public class orderHistory {
         this.customerTotal = customerTotal;
     }
 
+    public static TreeSet<order> getOrderQueue() {
+        return orderQueue;
+    }
+
+    public TreeSet<order> getOrders() {
+        return orders;
+    }
 }

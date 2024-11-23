@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javax.swing.SwingUtilities;
 
 public class Main {
     public static void main(String[] args) {
@@ -65,5 +66,10 @@ public class Main {
                     break;
             }
         }while(true);
+
+        SwingUtilities.invokeLater(() -> {
+            MenuGUI gui = new MenuGUI();
+            gui.setVisible(true);
+        });
     }
 }

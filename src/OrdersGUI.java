@@ -17,13 +17,11 @@ public class OrdersGUI extends JFrame {
         setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // Create orders table
         String[] columns = {"Order ID", "Customer ID", "Status", "Total"};
         ordersModel = new DefaultTableModel(columns, 0);
         ordersTable = new JTable(ordersModel);
         JScrollPane scrollPane = new JScrollPane(ordersTable);
 
-        // Create back button
         JPanel buttonPanel = new JPanel();
         backButton = new JButton("Back to Menu");
         backButton.addActionListener(e -> switchToMenu());

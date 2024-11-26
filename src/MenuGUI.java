@@ -17,13 +17,11 @@ public class MenuGUI extends JFrame {
 
         mainPanel = new JPanel(new BorderLayout());
 
-        // Create menu table
         String[] columns = {"Item ID", "Name", "Price", "Availability", "Category"};
         menuModel = new DefaultTableModel(columns, 0);
         menuTable = new JTable(menuModel);
         JScrollPane scrollPane = new JScrollPane(menuTable);
 
-        // Create buttons panel
         JPanel buttonPanel = new JPanel();
         viewOrdersButton = new JButton("View Orders");
         viewOrdersButton.addActionListener(e -> switchToOrders());
@@ -38,7 +36,7 @@ public class MenuGUI extends JFrame {
 
     private void refreshMenu() {
         menuModel.setRowCount(0);
-        // Add menu items from the Menu class
+
         for (item x : menu.getMenu().values()) {
             Object[] row = {
                     x.getItemid(),

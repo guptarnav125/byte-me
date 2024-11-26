@@ -24,7 +24,6 @@ public class SystemTests {
         // Try to order out of stock item (Item 2)
         testOrder.addItem(2, 1);
 
-        // Verify order was not added
         assertTrue(testOrder.isEmpty());
     }
 

@@ -1,7 +1,8 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.io.Serializable;
 
-public class item {
+public class item implements Serializable {
     private String name;
     private int itemid;
     private double price;

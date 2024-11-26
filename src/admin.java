@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import javax.swing.SwingUtilities;
 
 public class admin extends user{
     private static HashMap<String,admin> admins=new HashMap<>();

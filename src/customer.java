@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import javax.swing.SwingUtilities;
 
 public class customer extends user {
     private static HashMap<String, customer> customers = new HashMap<>();
@@ -9,15 +10,24 @@ public class customer extends user {
     private int priority=2;     //priority=2 --> Regular    priority=1 --> VIP
     private String choice3;
     private Scanner scanner = new Scanner(System.in);
-    public orderHistory history = new orderHistory(this.getUserid(),this.priority);
+    private String orderAddress=this.getName()+"_orders.dat";
+    public orderHistory history = new orderHistory(this,this.priority);
 
     public customer(String name, String password) {
         super(name, password);
         customers.put(name, this);
     }
 
+    public static HashMap<String, customer> getCustomers() {
+        return customers;
+    }
+
+    public String getOrderAddress() {
+        return orderAddress;
+    }
+
     public static customer login(String username, String password) {
-        customer customer1 = customers.get(username);
+        customer customer1 = fileManager.readCustomer(username);
         if (customer1 != null && customer1.getPassword().equals(password)) {
             System.out.println("Customer Login Successful");
             return customer1;
@@ -187,6 +197,7 @@ public class customer extends user {
 
     public void cartOrder() {
         order order1=new order(this.getUserid(),this.priority);
+        fileManager.newOrder(order1);
         boolean back = false;
         do {
             System.out.println("Cart Operations:");

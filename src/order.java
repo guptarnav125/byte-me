@@ -1,9 +1,9 @@
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.io.Serializable;
 
-
-public class order implements Comparable<order>{
+public class order implements Comparable<order>,Serializable {
     private int orderid;
     public static int counter=1;
     private int customerid;
@@ -11,7 +11,7 @@ public class order implements Comparable<order>{
     private String status="Pending";
     private String[] statusList={"pending","preparing","delivered","denied","cancelled"}; //so that status can only be set among these
     private HashMap<item,Integer> items=new HashMap<>();
-    private Scanner scanner=new Scanner(System.in);
+    private transient Scanner scanner=new Scanner(System.in);
     private double total=0;
     private String request;
 
@@ -39,6 +39,7 @@ public class order implements Comparable<order>{
             return;
         }
         items.put(x,quantity);
+        fileManager.addItem(itemid, x.getName(), quantity);
         x.setQuantity(x.getQuantity()-quantity);
     }
 

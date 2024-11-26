@@ -6,12 +6,10 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         admin arnav = new admin("Arnav","123456");
-        customer adarsh=new customer("Adarsh","booboo");
-        customer prakhar=new customer("Prakhar","shreya");
-        customer nakul=new customer("Nakul","nocool");
+        fileManager.readCustomersFromFile();
 
         menu.addItem(new item("Pizza",80,10,"Meal"));
-        menu.addItem(new item("Chole Bature",70,10,"Meal"));
+        menu.addItem(new item("Chole Bhature",70,10,"Meal"));
         menu.addItem(new item("Rajma Chawal",60,10,"Meal"));
         menu.addItem(new item("Burger",40,20,"Snacks"));
         menu.addItem(new item("Maggi",25,30,"Snacks"));
@@ -30,7 +28,8 @@ public class Main {
                 System.out.println("1. Customer Signup");
                 System.out.println("2. Customer Login");
                 System.out.println("3. Admin Login");
-                System.out.println("4. Exit");
+                System.out.println("4. Go to GUI");
+                System.out.println("5. Exit");
                 System.out.print("Enter your choice: ");
                 choice1 = scanner.nextInt();
             }catch(Exception e){
@@ -39,14 +38,22 @@ public class Main {
                 continue;
             }
             scanner.nextLine();
-            if(choice1==4){break;}
+            if(choice1==5){break;}
+            if(choice1==4){
+                SwingUtilities.invokeLater(() -> {
+                    MenuGUI gui = new MenuGUI();
+                    gui.setVisible(true);
+                });
+                break;
+            }
             System.out.print("Username: ");
             username1 = scanner.nextLine();
             System.out.print("Password: ");
             password1 = scanner.nextLine();
             switch(choice1){
                 case 1:
-                    new customer(username1,password1);
+                    customer new1= new customer(username1,password1);
+                    fileManager.writeCustomer(new1);
                     System.out.println("Customer Signup Successful");
                     break;
                 case 2:
@@ -66,10 +73,5 @@ public class Main {
                     break;
             }
         }while(true);
-
-        SwingUtilities.invokeLater(() -> {
-            MenuGUI gui = new MenuGUI();
-            gui.setVisible(true);
-        });
     }
 }

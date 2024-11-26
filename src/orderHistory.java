@@ -7,6 +7,7 @@ public class orderHistory {
     private TreeSet<order> orders=new TreeSet<>();
     private double customerTotal=0;
     private int customerid;
+    private customer customer;
     private int priority;
     private static TreeSet<order> orderQueue=new TreeSet<>();
     private static HashMap<order,String> completedOrders=new HashMap<>();
@@ -14,9 +15,10 @@ public class orderHistory {
     private static Scanner scanner = new Scanner(System.in);
     private static double totalSales=0;
 
-    public orderHistory(int customerid,int priority) {
-        this.customerid = customerid;
+    public orderHistory(customer customer1,int priority) {
+        this.customer = customer1;
         this.priority = priority;
+        this.customerid=customer.getUserid();
     }
 
     public void addOrder(order o){
@@ -25,7 +27,9 @@ public class orderHistory {
         customerTotal+=o.getTotal();
         totalSales+=o.getTotal();
         orders.add(o); //customer's orders
+        fileManager.writeAllOrders(this.customer.getOrderAddress(),orders);
         orderQueue.add(o); //all orders
+        fileManager.writeAllOrders("orders.dat",orderQueue);
     }
 
     public static void generateReport(){
@@ -38,7 +42,12 @@ public class orderHistory {
 
     public void customerHistory(){
         System.out.println();
-        for(order order:orders){
+        TreeSet<order> orders1= fileManager.readOrdersFromFile(this.customer.getOrderAddress());
+        if(orders1==null){
+            System.out.println("No customer history found");
+            return;
+        }
+        for(order order:orders1){
             System.out.println("Order ID: "+order.getOrderid());
             System.out.println("Customer ID: "+ this.customerid);
             System.out.println("Order Status: "+order.getStatus());
@@ -54,7 +63,12 @@ public class orderHistory {
 
     public static void fulLHistory(){
         System.out.println();
-        for(order order:orderQueue){
+        TreeSet<order> orders1= fileManager.readOrdersFromFile("orders.dat");
+        if(orders1==null){
+            System.out.println("No order history found");
+            return;
+        }
+        for(order order:orders1){
             System.out.println("Order ID: "+order.getOrderid());
             System.out.println("Customer ID: "+ order.getCustomerid());
             System.out.println("Order Status: "+order.getStatus());

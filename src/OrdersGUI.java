@@ -3,6 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.TreeSet;
 
 public class OrdersGUI extends JFrame {
     private JTable ordersTable;
@@ -36,8 +37,12 @@ public class OrdersGUI extends JFrame {
 
     private void refreshOrders() {
         ordersModel.setRowCount(0);
-        // Add pending orders from the orderHistory class
-        for (order o : orderHistory.getOrderQueue()) {
+        TreeSet<order> orders1= fileManager.readOrdersFromFile("orders.dat");
+        if(orders1==null){
+            System.out.println("No order history found");
+            return;
+        }
+        for(order o:orders1){
             Object[] row = {
                     o.getOrderid(),
                     o.getCustomerid(),
